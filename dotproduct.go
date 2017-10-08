@@ -27,7 +27,6 @@ func main() {
 	  check(err)
 		defer f1.Close()
 
-
 		f2, err := os.Open(os.Args[2]) //"../tmp/matrix2.txt"
 	  check(err)
 		defer f2.Close()
@@ -68,17 +67,11 @@ func getMatrix(f *os.File, first bool) [][]int {
 		}
 
 		matrix[y] = make([]int, maxX)
-		for i := range line {
+		var i int
+		for i = range line {
 			num, err := strconv.Atoi(line[i])
 			check(err)
 			matrix[y][i] = num
-
-			//increment column size based on what matrix is currently being read
-			if (first) {
-				x1 = i + 1
-			} else {
-				x2 = i + 1
-			}
 		}
 		y++
 
@@ -86,10 +79,12 @@ func getMatrix(f *os.File, first bool) [][]int {
 			matrix = doubleLength(matrix)
 		}
 
-		//increment row size based on what matrix is currently being read
+		//increment row and column sizes based on what matrix is currently being read
 		if (first) {
+			x1 = i + 1
 			y1++
 		} else {
+			x2 = i + 1
 			y2++
 		}
 	}
