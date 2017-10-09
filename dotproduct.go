@@ -23,11 +23,11 @@ func main() {
 		fmt.Println("Please include the locations of the matrix files as command line arguments.")
 	} else {
 		//open both matrix files
-	  f1, err := os.Open(os.Args[1]) //"../tmp/matrix1.txt"
+	  f1, err := os.Open(os.Args[1])
 	  check(err)
 		defer f1.Close()
 
-		f2, err := os.Open(os.Args[2]) //"../tmp/matrix2.txt"
+		f2, err := os.Open(os.Args[2])
 	  check(err)
 		defer f2.Close()
 
